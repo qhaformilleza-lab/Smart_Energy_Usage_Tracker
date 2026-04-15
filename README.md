@@ -7,11 +7,17 @@ The Smart Energy Usage Tracker is a web-based application designed to help users
 This project demonstrates full-stack development using a Python backend and a modern JavaScript frontend.
 
 🚀 Features
+📝Login Interface
+
+Lets the user to sign up to create ther account.
+Saves the data of their account when logging in.
+
 📊 Dashboard
 
 View average daily electricity and water usage
 See estimated monthly bill
 Visualize recent 7-day consumption with charts
+
 📝 Usage Logging
 
 Add electricity and water usage entries
@@ -21,6 +27,7 @@ Delete entries easily
 
 Weekly and monthly consumption charts
 Separate visualization for electricity and water
+
 💸 Bill Estimator
 
 Calculate estimated bill based on usage
@@ -36,14 +43,11 @@ Flask (REST API)
 Flask-CORS
 Database
 SQLite
-📂 Project Structure
-Smart_Energy_Usage_Tracker/ │ ├── app.py ├── database.py ├── energy.db │ └── templates/ └── index.html
 
 ⚙️ Installation & Setup
-Clone the repository: <<<<<<< HEAD
-=======
+Clone the repository:
 
-git clone https://github.com/SimonLapuz/Smart_Energy_Usage_Tracker.git
+git clone https://github.com/https://github.com/qhaformilleza-lab/Smart_Energy_Usage_Tracker.git
 cd Smart_Energy_Usage_Tracker
 
 2. Install dependencies:
@@ -62,13 +66,13 @@ python database.py
 
 
 📡 API Endpoints
-Method	    Endpoint	        Description
-GET	        /api/entries	    Get all entries
-POST	    /api/entries	    Add a new entry
-DELETE	    /api/entries/<id>	Delete an entry
+Method	    Endpoint	          Description
+GET	        /api/entries	      Get all entries
+POST	      /api/entries	      Add a new entry
+DELETE	    /api/entries/<id>	  Delete an entry
 GET	        /api/dashboard	    Dashboard summary
 GET	        /api/trends	        Usage trends
-GET	        /api/bill	        Estimate utility bill
+GET	        /api/bill	          Estimate utility bill
 
 
 📚 Learnings

@@ -67,12 +67,18 @@ python database.py
 
 
 📡 API Endpoints
+
 Method	      Endpoint	          Description
 GET	          /api/entries	      Get all entries
+
 POST	        /api/entries	      Add a new entry
+
 DELETE	      /api/entries/<id>	  Delete an entry
+
 GET	          /api/dashboard	    Dashboard summary
+
 GET	          /api/trends	        Usage trends
+
 GET	          /api/bill	          Estimate utility bill
 
 

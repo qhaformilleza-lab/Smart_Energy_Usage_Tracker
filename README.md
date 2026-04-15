@@ -7,6 +7,7 @@ The Smart Energy Usage Tracker is a web-based application designed to help users
 This project demonstrates full-stack development using a Python backend and a modern JavaScript frontend.
 
 🚀 Features
+
 📝Login Interface
 
 Lets the user to sign up to create ther account.

@@ -86,10 +86,15 @@ Practiced UI/UX design principles
 
 👨‍💻 Author
 Simon Parick P. Lapuz
+
 Huone Formilleza
+
 Vryant Heindriech Kyle A. Sy
+
 Jacob V. Salamanca
+
 Romar V. Lemmer
+
 Jared Patrick Mapaye
 
 

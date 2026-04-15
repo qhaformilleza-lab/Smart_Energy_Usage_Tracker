@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: linear-gradient(135deg, #e9f7f1, #f3fbff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            width: min(380px, 100%);
+            box-shadow: 0 30px 90px rgba(15, 62, 84, 0.08);
+            border: 1px solid rgba(29, 158, 117, 0.12);
+        }
+        input {
+            width: 100%;
+            padding: 14px 12px;
+            margin: 10px 0;
+            border: 1px solid #d7d7d7;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: border-color .2s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1d9e75;
+            box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.12);
+        }
+
+        .mode-toggle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .mode-toggle button {
+            padding: 12px 0;
+            border: 1px solid #d7d7d7;
+            background: transparent;
+            color: #333;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background .2s ease, border-color .2s ease, color .2s ease;
+        }
+
+        .mode-toggle button.active {
+            background: #1D9E75;
+            color: white;
+            border-color: #1D9E75;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #1D9E75, #17A06D);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px rgba(29, 158, 117, 0.24);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: #1D9E75;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 18px rgba(29, 158, 117, 0.18);
+        }
+
+        .subtitle {
+            margin: 8px 0 0;
+            color: #64707d;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        #msg {
+            margin-top: 16px;
+            min-height: 20px;
+            color: #c0392b;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="brand">
+        <div class="logo">⚡</div>
+        <div>
+            <h2 id="form-title">Login</h2>
+            <p class="subtitle">Secure access to your personal energy tracker.</p>
+        </div>
+    </div>
+
+    <div class="mode-toggle">
+        <button id="login-mode" class="active" onclick="setMode('login')">Login</button>
+        <button id="register-mode" onclick="setMode('register')">Sign up</button>
+    </div>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="submit-btn" class="submit-button" onclick="submitForm()">Login</button>
+    <p id="msg"></p>
+</div>
+
+<script>
+const API = "";
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const msgEl = document.getElementById("msg");
+const submitBtn = document.getElementById("submit-btn");
+const formTitle = document.getElementById("form-title");
+let mode = "login";
+
+function setMode(newMode) {
+    mode = newMode;
+    document.getElementById("login-mode").classList.toggle("active", newMode === "login");
+    document.getElementById("register-mode").classList.toggle("active", newMode === "register");
+    formTitle.innerText = newMode === "login" ? "Login" : "Create account";
+    submitBtn.innerText = newMode === "login" ? "Login" : "Sign up";
+    msgEl.innerText = "";
+}
+
+async function submitForm() {
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    if (!username || !password) {
+        msgEl.innerText = "Please enter both username and password.";
+        return;
+    }
+
+    const url = mode === "login" ? "/login" : "/register";
+    const res = await fetch(API + url, {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+    if (res.ok) {
+        localStorage.setItem("user", data.username);
+        window.location.href = "/";
+    } else {
+        msgEl.innerText = data.error || "Unable to complete request.";
+    }
+}
+
+setMode("login");
+</script>
+
+</body>
+</html>

@@ -69,6 +69,7 @@ python database.py
 📡 API Endpoints
 
 Method	      Endpoint	          Description
+
 GET	          /api/entries	      Get all entries
 
 POST	        /api/entries	      Add a new entry

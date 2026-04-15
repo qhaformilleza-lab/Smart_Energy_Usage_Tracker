@@ -91,7 +91,8 @@ Integrated dynamic charts using Chart.js
 Practiced UI/UX design principles
 
 
-👨‍💻 Author
+👨‍💻 Authors
+
 Simon Parick P. Lapuz
 
 Huone Formilleza
